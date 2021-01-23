@@ -1,13 +1,14 @@
 {
   "globals": {
     "meta": {
-      "title": "llama boilerplate",
-      "description": "Basic front-end startup project.",
+      "title": "Prototyp",
+      "description": "Prototypy kart i inne.",
       "viewport": "width=device-width, initial-scale=1, maximum-scale=1",
       "favicon": "../img/favicon.ico"
     },
     "sitemap": {
-      "index": "index.html"
+      "index": "index.html",
+      "cards-items-equipment": "cards-items-equipment.html"
     }
   }
 }
