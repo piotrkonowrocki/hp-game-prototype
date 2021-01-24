@@ -1,4 +1,4 @@
-import StaticComponent from './components/static-component';
+import DeckHandler from './components/deck-handler';
 
 class App {
     constructor() {
@@ -6,21 +6,9 @@ class App {
     }
 
     init() {
-        this.initStaticComponent();
-        this.initAsyncComponent();
-    }
-
-    initStaticComponent() {
-        const staticComponent = new StaticComponent();
-
-        staticComponent.printMessage();
-    }
-
-    async initAsyncComponent() {
-        const AsyncComponent = (await import('./components/async-component')).default;
-        const asyncComponent = new AsyncComponent();
-
-        asyncComponent.printMessage();
+        document.querySelectorAll('.deck').forEach(item => {
+            new DeckHandler(item);
+        });
     }
 }
 
