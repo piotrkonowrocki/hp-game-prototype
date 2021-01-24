@@ -8,7 +8,9 @@
     },
     "sitemap": {
       "index": "index.html",
-      "cards-items-equipment": "cards-items-equipment.html"
+      "cards-items-equipment": "cards-items-equipment.html",
+      "cards-items-books": "cards-items-books.html",
+      "cards-items-potions": "cards-items-potions.html"
     }
   }
 }

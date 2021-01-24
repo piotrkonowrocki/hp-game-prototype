@@ -11,10 +11,10 @@ export default class Deck {
             data,
             format: this.params.format,
             regions: this.params.regions,
-            renderDefaultValues: this.params.renderDefaultValues
+            renderDefaultValues: this.params.renderDefaultValues,
+            renderCustomValues: this.params.renderer
         });
 
-        card.renderCustomValues(this.params.renderer);
         this.cards.push(card);
     }
 

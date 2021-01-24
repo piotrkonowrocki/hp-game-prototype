@@ -4,6 +4,7 @@ import Deck from './deck';
 export default class DeckHandler {
     constructor(item) {
         this.container = item;
+        this.fakeFontPreload();
         this.init(item.getAttribute('data-module'));
     }
 
@@ -27,6 +28,20 @@ export default class DeckHandler {
         this.sheet = sheet;
     }
 
+    fakeFontPreload() {
+        const container = document.createElement('div');
+
+        container.classList.add('fake-font-preload');
+        container.innerHTML += '<p class="sans-serif">Lorem ipsum dolor sit amet</p>';
+        container.innerHTML += '<p class="sans-serif"><strong>Lorem ipsum dolor sit amet</strong></p>';
+        container.innerHTML += '<p class="sans-serif"><em>Lorem ipsum dolor sit amet</em></p>';
+        container.innerHTML += '<p class="serif">Lorem ipsum dolor sit amet</p>';
+        container.innerHTML += '<p class="serif"><strong>Lorem ipsum dolor sit amet</strong></p>';
+        container.innerHTML += '<p class="serif"><em>Lorem ipsum dolor sit amet</em></p>';
+
+        document.body.appendChild(container);
+    }
+
     createDeck() {
         this.deck = new Deck(this.module.deckSettings);
     }
@@ -38,11 +53,13 @@ export default class DeckHandler {
         Object.keys(this.module.sets).forEach(set => {
             this.deck.createCard(this.module.sets[set]);
         });
+        // this.deck.createCard(this.module.sets[9]);
     }
 
     displayCards() {
         this.deck.getCards().forEach(card => {
             this.container.appendChild(card.getNode());
+            card.fitTextInRegions();
         });
     }
 }

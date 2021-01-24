@@ -1,14 +1,12 @@
 .card {
     position: relative;
     display: flex;
-    flex-wrap: wrap;
-    flex-flow: column wrap;
+    flex-flow: column nowrap;
     align-content: flex-start;
     margin: 0 10px 10px 0;
     padding: 8px 8px 0;
     border: 2px solid $color-black;
     border-radius: 6px;
-    font-size: 10px;
 
     &--format {
         &-mini {
@@ -24,6 +22,7 @@
         align-content: flex-start;
         width: 100%;
         margin: 4px 0;
+        font-size: 10px;
         &:first-child {
             margin-top: 0;
         }
@@ -39,6 +38,7 @@
             }
             &-content {
                 flex-grow: 1;
+                overflow: auto;
             }
             &-footer {
                 height: 24px;
@@ -78,7 +78,7 @@
         width: 100%;
         &.title {
             font-family: $font-default-serif;
-            font-size: 12px;
+            font-size: 1.2em;
             text-align: center;
             line-height: 1.2;
         }

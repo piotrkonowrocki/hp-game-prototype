@@ -1,0 +1,11 @@
+.fake-font-preload {
+    position: absolute;
+    top: -100%;
+    left: -100%;
+    .sans-serif {
+        font-family: $font-default-sans-serif;
+    }
+    .serif {
+        font-family: $font-default-serif;
+    }
+}

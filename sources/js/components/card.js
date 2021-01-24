@@ -19,6 +19,7 @@ export default class Card {
 
         this.renderLayout();
         if (this.params.renderDefaultValues) this.renderDefaultValues();
+        if (this.params.renderCustomValues) this.renderCustomValues();
     }
 
     renderLayout() {
@@ -70,11 +71,12 @@ export default class Card {
                 classes: ['category']
             });
 
-            this.container.querySelector('.region--position-content').appendChild(category);
+            this.container.querySelector('.region--position-subheader').appendChild(category);
         }
         if (data.description) {
             data.description.forEach(item => {
-                const description = this.createTextNode(item, {
+                const textWithoutOrphans = item.replace(/\s([^\s<]+)\s*$/u, '\u00A0$1');
+                const description = this.createTextNode(textWithoutOrphans, {
                     classes: ['description']
                 });
 
@@ -161,8 +163,20 @@ export default class Card {
         this.container.querySelector(`.region--position-${region} .corner--position-${corner}`).appendChild(container);
     }
 
-    renderCustomValues(renderer) {
-        renderer(this);
+    renderCustomValues() {
+        this.params.renderCustomValues(this);
+    }
+
+    fitTextInRegions() {
+        this.container.querySelectorAll('.region').forEach(item => {
+            const interval = setInterval(() => {
+                if (item.scrollHeight > item.offsetHeight) {
+                    const fontSize = `${parseFloat(getComputedStyle(item).fontSize, 10) - 0.1}px`;
+
+                    item.style.fontSize = fontSize;
+                } else clearInterval(interval);
+            }, 10);
+        });
     }
 
     getNode() {

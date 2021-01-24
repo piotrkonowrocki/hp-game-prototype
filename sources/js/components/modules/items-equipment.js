@@ -7,7 +7,7 @@ export default class {
         };
         this.deckSettings = {
             format: 'mini',
-            regions: ['header', 'cover', 'content', 'footer'],
+            regions: ['header', 'cover', 'subheader', 'content', 'footer'],
             renderDefaultValues: true,
             renderer: this.renderer
         };
