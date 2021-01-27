@@ -23,12 +23,14 @@ export default class Card {
     }
 
     renderLayout() {
+        const regions = this.params.regions || this.determineDefaultRegions();
+
         this.container = document.createElement('div');
 
         this.container.classList.add('card');
         this.container.classList.add(`card--format-${this.params.format}`);
 
-        this.params.regions.forEach(item => {
+        regions.forEach(item => {
             const region = document.createElement('div');
 
             region.classList.add('region');
@@ -44,6 +46,19 @@ export default class Card {
 
             this.container.appendChild(region);
         });
+    }
+
+    determineDefaultRegions() {
+        const regions = [];
+        const footerKeys = ['val', 'slot', 'size', 'darkMagic', 'modifiers'];
+
+        if (this.params.data.title) regions.push('header');
+        if (this.params.data.cover) regions.push('cover');
+        if (this.params.data.category) regions.push('subheader');
+        regions.push('content');
+        if (Object.keys(this.params.data).some(item => footerKeys.indexOf(item) >= 0)) regions.push('footer');
+
+        return regions;
     }
 
     renderDefaultValues() {
@@ -75,8 +90,8 @@ export default class Card {
         }
         if (data.description) {
             data.description.forEach(item => {
-                const textWithoutOrphans = item.replace(/\s([^\s<]+)\s*$/u, '\u00A0$1');
-                const description = this.createTextNode(textWithoutOrphans, {
+                // const textWithoutOrphans = item.replace(/\s([^\s<]+)\s*$/u, '\u00A0$1');
+                const description = this.createTextNode(item, {
                     classes: ['description']
                 });
 
@@ -107,6 +122,7 @@ export default class Card {
 
     createTextNode(text, settings = {}) {
         const textNode = document.createElement('span');
+        let textToDisplay = text;
 
         textNode.classList.add('text-node');
         if (settings.classes) {
@@ -114,8 +130,9 @@ export default class Card {
                 textNode.classList.add(item);
             });
         }
-
-        textNode.innerHTML = this.replaceTextToIcon(text);
+        if (settings.wrapper) textToDisplay = `<${settings.wrapper}>${textToDisplay}</${settings.wrapper}>`;
+        if (settings.prefix) textToDisplay = `${settings.prefix}${textToDisplay}`;
+        textNode.innerHTML = this.replaceTextToIcon(textToDisplay);
 
         return textNode;
     }
@@ -152,7 +169,7 @@ export default class Card {
             const text = document.createElement('span');
 
             text.classList.add('icon-text');
-            text.innerText = settings.text;
+            text.innerHTML = settings.text;
             container.appendChild(text);
         }
         if (settings.last) {

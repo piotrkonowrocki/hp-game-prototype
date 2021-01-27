@@ -16,18 +16,6 @@ export default class DeckHandler {
         this.displayCards();
     }
 
-    async loadModule(module) {
-        const Module = (await import(`./modules/${module}`)).default;
-
-        this.module = new Module();
-    }
-
-    async loadSheetData() {
-        const sheet = await sheetLoader.loadData(this.module.sheetDataSettings);
-
-        this.sheet = sheet;
-    }
-
     fakeFontPreload() {
         const container = document.createElement('div');
 
@@ -40,6 +28,18 @@ export default class DeckHandler {
         container.innerHTML += '<p class="serif"><em>Lorem ipsum dolor sit amet</em></p>';
 
         document.body.appendChild(container);
+    }
+
+    async loadModule(module) {
+        const Module = (await import(`./modules/${module}`)).default;
+
+        this.module = new Module();
+    }
+
+    async loadSheetData() {
+        const sheet = await sheetLoader.loadData(this.module.sheetDataSettings);
+
+        this.sheet = sheet;
     }
 
     createDeck() {

@@ -8,13 +8,6 @@
     border: 2px solid $color-black;
     border-radius: 6px;
 
-    &--format {
-        &-mini {
-            width: 166px; //44mm;
-            height: 257px; //68mm;
-        }
-    }
-
     .region {
         position: relative;
         display: flex;
@@ -35,6 +28,27 @@
             }
             &-cover {
                 height: 70px;
+
+                .icon {
+                    background: $color-white;
+                    border-color: transparent;
+                }
+                .corner {
+                    &--position {
+                        &-left-bottom {
+                            .icon {
+                                border-left: none;
+                                border-radius: 0 6px 0 0;
+                            }
+                        }
+                        &-right-bottom {
+                            .icon {
+                                border-right: none;
+                                border-radius: 6px 0 0 0;
+                            }
+                        }
+                    }
+                }
             }
             &-content {
                 flex-grow: 1;
@@ -50,6 +64,7 @@
         .corner {
             position: absolute;
             display: flex;
+            z-index: 1;
 
             &--position {
                 &-left-top {
@@ -70,6 +85,29 @@
                 }
             }
     
+        }
+    }
+
+    &--format {
+        &-mini {
+            width: 166px; //44mm;
+            height: 257px; //68mm;
+        }
+        &-standard {
+            width: 241px; //64mm;
+            height: 336px; //89mm;
+
+            .region {
+                &--position {
+                    &-cover {
+                        height: 90px;
+                    }
+                }
+            }
+        }
+        &-oversize {
+            width: 278px; //79mm;
+            height: 441px; //120mm;
         }
     }
 
@@ -95,10 +133,38 @@
                 display: inline-block;
                 width: 12px;
                 height: 12px;
-                vertical-align: sub;
+                vertical-align: middle;
             }
             .no-wrap {
                 white-space: nowrap;
+            }
+            + .description {
+                margin-top: 4px;
+            }
+
+            &--dots,
+            &--dots-below {
+                + .description--dots {
+                    position: relative;
+                    margin-top: 16px;
+                    &::before {
+                        content: '';
+                        position: absolute;
+                        top: -11px;
+                        left: 50%;
+                        width: 24px;
+                        height: 12px;
+                        margin-left: -12px;
+                        background-image: radial-gradient($color-black 1px, $color-white 2px);
+                        background-position: 0 0;
+                        background-size: 8px 8px;
+                        background-repeat: repeat-x
+                    }
+                }
+            }
+            &--or {
+                font-size: 0.8em;
+                text-align: center;
             }
         }
     }
@@ -114,7 +180,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            height: 90%;
+            height: 64px;
             margin: auto;
             mix-blend-mode: multiply;
         }
@@ -123,11 +189,18 @@
     .icon {
         min-width: 24px;
         height: 24px;
+        margin-right: 2px;
         border: 2px solid $color-black;
         border-bottom: none;
         border-radius: 6px 6px 0 0;
+        text-align: center;
         &--last {
             order: 99;
+            margin-left: 2px;
+            margin-right: 0;
+        }
+        &:last-child {
+            margin-right: 0;
         }
 
         &-image {
@@ -142,10 +215,9 @@
             font-weight: bold;
             line-height: 22px;
             margin: 0 2px 0 0;
-        }
-
-        + .icon {
-            margin-left: 2px;
+            &:first-child {
+                margin-left: 2px;
+            }
         }
     }
 }

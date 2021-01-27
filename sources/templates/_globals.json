@@ -8,9 +8,13 @@
     },
     "sitemap": {
       "index": "index.html",
+      "events-local": "events-local.html",
       "cards-items-equipment": "cards-items-equipment.html",
       "cards-items-books": "cards-items-books.html",
-      "cards-items-potions": "cards-items-potions.html"
+      "cards-items-potions": "cards-items-potions.html",
+      "spells-offensive": "spells-offensive.html",
+      "spells-support": "spells-support.html",
+      "spells-individual": "spells-individual.html"
     }
   }
 }
