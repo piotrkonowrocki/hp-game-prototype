@@ -50,7 +50,7 @@ export default class Card {
 
     determineDefaultRegions() {
         const regions = [];
-        const footerKeys = ['val', 'slot', 'size', 'darkMagic', 'modifiers'];
+        const footerKeys = ['val', 'slot', 'size', 'darkMagic', 'modifiers', 'duration'];
 
         if (this.params.data.title) regions.push('header');
         if (this.params.data.cover) regions.push('cover');
@@ -163,6 +163,13 @@ export default class Card {
             img.classList.add('icon-image');
             img.src = `../img/content/${settings.icon}.png`;
             if (settings.scale) img.style.transform = `scale(${settings.scale})`;
+            container.appendChild(img);
+        }
+        if (settings.index) {
+            const img = document.createElement('img');
+
+            img.classList.add('icon-index');
+            img.src = `../img/content/${settings.index}.png`;
             container.appendChild(img);
         }
         if (settings.text) {

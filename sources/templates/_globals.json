@@ -9,6 +9,7 @@
     "sitemap": {
       "index": "index.html",
       "events-local": "events-local.html",
+      "events-global": "events-global.html",
       "cards-items-equipment": "cards-items-equipment.html",
       "cards-items-books": "cards-items-books.html",
       "cards-items-potions": "cards-items-potions.html",

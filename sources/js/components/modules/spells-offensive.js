@@ -41,7 +41,7 @@ export default class {
             });
         }
         card.pushIcon('cover', 'right-bottom', {
-            icon: 'spell-cooldown',
+            icon: 'duration',
             text: data.cooldown
         });
 
