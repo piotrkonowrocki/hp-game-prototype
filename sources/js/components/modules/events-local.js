@@ -36,6 +36,7 @@ export default class {
 
     renderer(card) {
         const data = card.params.data;
+        const hasTarget = data.target !== '×';
         const hasOrder = data.order !== '×';
 
         const target = card.createTextNode(data.target, {
@@ -67,12 +68,16 @@ export default class {
             classes: ['description']
         });
 
-        card.container.querySelector('.region--position-content').appendChild(target);
+        if (hasTarget) card.container.querySelector('.region--position-content').appendChild(target);
         card.container.querySelector('.region--position-content').appendChild(narrative);
-        if (hasOrder) card.container.querySelector('.region--position-content').appendChild(order);
-        if (hasOrder) card.container.querySelector('.region--position-content').appendChild(defaultOrFailureNarrative);
+        if (hasOrder) {
+            card.container.querySelector('.region--position-content').appendChild(order);
+            card.container.querySelector('.region--position-content').appendChild(defaultOrFailureNarrative);
+        }
         card.container.querySelector('.region--position-content').appendChild(defaultOrFailureOutcome);
-        if (hasOrder) card.container.querySelector('.region--position-content').appendChild(successNarrative);
-        if (hasOrder) card.container.querySelector('.region--position-content').appendChild(successOutcome);
+        if (hasOrder) {
+            card.container.querySelector('.region--position-content').appendChild(successNarrative);
+            card.container.querySelector('.region--position-content').appendChild(successOutcome);
+        }
     }
 }
