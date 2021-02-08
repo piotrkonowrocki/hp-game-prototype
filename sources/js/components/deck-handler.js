@@ -4,11 +4,13 @@ import Deck from './deck';
 export default class DeckHandler {
     constructor(item) {
         this.container = item;
+        this.isPlayable = item.classList.contains('playable');
         this.fakeFontPreload();
         this.init(item.getAttribute('data-module'));
     }
 
     async init(module) {
+        if (this.isPlayable) this.createPlayableUI();
         await this.loadModule(module);
         await this.loadSheetData(module);
         this.createDeck();
@@ -61,5 +63,23 @@ export default class DeckHandler {
             this.container.appendChild(card.getNode());
             card.fitTextInRegions();
         });
+    }
+
+    createPlayableUI() {
+        const ui = document.createElement('div');
+        const draw = document.createElement('a');
+        const shuffle = document.createElement('a');
+
+        ui.classList.add('ui');
+        draw.href = '#';
+        shuffle.href = '#';
+        draw.classList.add('ui-button');
+        shuffle.classList.add('ui-button');
+        draw.classList.add('ui-button--draw');
+        shuffle.classList.add('ui-button--shuffle');
+
+        ui.appendChild(draw);
+        ui.appendChild(shuffle);
+        this.container.appendChild(ui);
     }
 }

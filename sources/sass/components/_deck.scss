@@ -1,4 +1,8 @@
 .deck {
+    position: relative;
     display: flex;
     flex-wrap: wrap;
+    &.playable {
+        padding-top: 60px;
+    }
 }
