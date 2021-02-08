@@ -1,0 +1,20 @@
+.ui {
+    position: absolute;
+    display: flex;
+    top: 10px;
+    left: 0;
+    &-button {
+        width: 40px;
+        height: 40px;
+        margin: 0 10px 0 0;
+        background-color: $color-white;
+        border-radius: 6px;
+        background: $color-white no-repeat 50% 50% / 36px 36px;
+        &--draw {
+            background-image: url('/img/content/ui-draw.png');
+        }
+        &--shuffle {
+            background-image: url('/img/content/ui-shuffle.png');
+        }
+    }
+}
