@@ -50,7 +50,7 @@ export default class Card {
 
     determineDefaultRegions() {
         const regions = [];
-        const footerKeys = ['val', 'slot', 'size', 'darkMagic', 'modifiers', 'duration'];
+        const footerKeys = ['val', 'slot', 'size', 'darkMagic', 'modifiers', 'duration', 'traces'];
 
         if (this.params.data.title) regions.push('header');
         if (this.params.data.cover) regions.push('cover');
@@ -152,6 +152,10 @@ export default class Card {
         });
 
         return replacedText;
+    }
+
+    boldWordInText(text, word) {
+        return text.replace(new RegExp(word, 'gu'), `<strong>${word}</strong>`);
     }
 
     pushIcon(region, corner, settings = {}) {
