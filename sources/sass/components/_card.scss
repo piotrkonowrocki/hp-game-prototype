@@ -12,6 +12,16 @@
     .dark-theme & {
         border-color: $color-gray;
     }
+    .playable & {
+        position: absolute;
+        opacity: 0;
+        z-index: 1;
+        &.current {
+            position: relative;
+            opacity: 1;
+            z-index: 2;
+        }
+    }
 
     .region {
         position: relative;

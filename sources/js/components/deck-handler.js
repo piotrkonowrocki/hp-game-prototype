@@ -59,10 +59,15 @@ export default class DeckHandler {
     }
 
     displayCards() {
+        this.container.querySelectorAll('.card').forEach(item => {
+            item.parentNode.removeChild(item);
+        });
+        if (this.isPlayable) this.deck.shuffle();
         this.deck.getCards().forEach(card => {
             this.container.appendChild(card.getNode());
             card.fitTextInRegions();
         });
+        if (this.isPlayable) this.nextCard();
     }
 
     createPlayableUI() {
@@ -81,5 +86,32 @@ export default class DeckHandler {
         ui.appendChild(draw);
         ui.appendChild(shuffle);
         this.container.appendChild(ui);
+
+        draw.addEventListener('click', e => {
+            this.nextCard();
+
+            e.preventDefault();
+        });
+        shuffle.addEventListener('click', e => {
+            this.nextCard();
+
+            e.preventDefault();
+        });
+    }
+
+    nextCard() {
+        const cards = this.container.querySelectorAll('.card');
+        const current = this.container.querySelector('.current');
+
+        if (!current) {
+            cards[0].classList.add('current');
+        } else {
+            current.classList.remove('current');
+            if (current.nextElementSibling) {
+                current.nextElementSibling.classList.add('current');
+            } else {
+                this.displayCards();
+            }
+        }
     }
 }

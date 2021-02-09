@@ -21,4 +21,8 @@ export default class Deck {
     getCards() {
         return this.cards;
     }
+
+    shuffle() {
+        this.cards.sort(() => Math.random() - 0.5);
+    }
 }
