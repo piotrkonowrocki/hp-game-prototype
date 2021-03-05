@@ -1,8 +1,13 @@
 .ui {
     position: absolute;
     display: flex;
+    align-items: center;
     top: 10px;
     left: 0;
+    &-title {
+        color: $color-white;
+        margin-right: 1rem;
+    }
     &-button {
         width: 40px;
         height: 40px;

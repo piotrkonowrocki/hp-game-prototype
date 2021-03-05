@@ -6,11 +6,17 @@ export default class DeckHandler {
         this.container = item;
         this.isPlayable = item.classList.contains('playable');
         this.fakeFontPreload();
-        this.init(item.getAttribute('data-module'));
+        this.init(item);
     }
 
-    async init(module) {
-        if (this.isPlayable) this.createPlayableUI();
+    async init(item) {
+        const module = item.getAttribute('data-module');
+
+        if (this.isPlayable) {
+            const title = item.getAttribute('data-title');
+
+            this.createPlayableUI(title);
+        }
         await this.loadModule(module);
         await this.loadSheetData(module);
         this.createDeck();
@@ -70,10 +76,11 @@ export default class DeckHandler {
         if (this.isPlayable) this.nextCard();
     }
 
-    createPlayableUI() {
+    createPlayableUI(titleText) {
         const ui = document.createElement('div');
         const draw = document.createElement('a');
         const shuffle = document.createElement('a');
+        const title = document.createElement('span');
 
         ui.classList.add('ui');
         draw.href = '#';
@@ -82,9 +89,12 @@ export default class DeckHandler {
         shuffle.classList.add('ui-button');
         draw.classList.add('ui-button--draw');
         shuffle.classList.add('ui-button--shuffle');
+        title.classList.add('ui-title');
+        title.innerText = titleText;
 
         ui.appendChild(draw);
         ui.appendChild(shuffle);
+        ui.appendChild(title);
         this.container.appendChild(ui);
 
         draw.addEventListener('click', e => {
