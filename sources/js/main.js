@@ -1,3 +1,4 @@
+import Resizer from './components/resizer';
 import DeckHandler from './components/deck-handler';
 
 class App {
@@ -6,6 +7,7 @@ class App {
     }
 
     init() {
+        new Resizer();
         document.querySelectorAll('.deck').forEach(item => {
             new DeckHandler(item);
         });

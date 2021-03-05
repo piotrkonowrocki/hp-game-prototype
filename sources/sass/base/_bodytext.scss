@@ -8,5 +8,22 @@ h2,
 h3,
 h4,
 h5 {
+    margin: 20px 0;
     font-family: $font-default-serif;
+}
+
+h1 {
+    font-size: 30px;
+}
+h2 {
+    font-size: 20px;
+}
+p,
+ul {
+    margin: 20px 0;
+    font-size: 14px;
+}
+
+ul {
+    padding-left: 20px;
 }

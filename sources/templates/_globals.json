@@ -17,7 +17,12 @@
       "cards-items-potions": "cards-items-potions.html",
       "spells-offensive": "spells-offensive.html",
       "spells-support": "spells-support.html",
-      "spells-individual": "spells-individual.html"
+      "spells-individual": "spells-individual.html",
+      "locations": "locations.html",
+      "search": "search.html",
+      "search-gold": "search-gold.html",
+      "search-silver": "search-silver.html",
+      "search-bronze": "search-bronze.html"
     }
   }
 }

@@ -16,6 +16,7 @@ export default class DeckHandler {
         this.createDeck();
         this.createCards();
         this.displayCards();
+        this.attachEvents();
     }
 
     fakeFontPreload() {
@@ -113,5 +114,14 @@ export default class DeckHandler {
                 this.displayCards();
             }
         }
+    }
+
+    attachEvents() {
+        document.body.addEventListener('font-resized', () => {
+            this.deck.getCards().forEach(card => {
+                card.resetTextInRegions();
+                card.fitTextInRegions();
+            });
+        });
     }
 }

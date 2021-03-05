@@ -195,13 +195,26 @@ export default class Card {
         this.params.renderCustomValues(this);
     }
 
+    resetTextInRegions() {
+        console.log('reset');
+        this.container.querySelectorAll('.region').forEach(item => {
+            if (item.getAttribute('data-font-size')) {
+                item.removeAttribute('data-font-size');
+                item.removeAttribute('style');
+            }
+        });
+    }
+
     fitTextInRegions() {
         this.container.querySelectorAll('.region').forEach(item => {
             const interval = setInterval(() => {
                 if (item.scrollHeight > item.offsetHeight) {
-                    const fontSize = `${parseFloat(getComputedStyle(item).fontSize, 10) - 0.1}px`;
+                    let fontSize = item.getAttribute('data-font-size') || 1;
 
-                    item.style.fontSize = fontSize;
+                    fontSize -= 0.01;
+
+                    item.setAttribute('data-font-size', fontSize);
+                    item.style.fontSize = `${fontSize}em`;
                 } else clearInterval(interval);
             }, 10);
         });

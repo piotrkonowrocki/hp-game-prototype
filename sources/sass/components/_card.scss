@@ -3,10 +3,10 @@
     display: flex;
     flex-flow: column nowrap;
     align-content: flex-start;
-    margin: 0 10px 10px 0;
-    padding: 8px 8px 0;
-    border: 2px solid $color-black;
-    border-radius: 6px;
+    margin: 0 1rem 1rem 0;
+    padding: 0.8rem 0.8rem 0;
+    border: 0.2rem solid $color-black;
+    border-radius: 0.6rem;
     background-color: $color-white;
 
     .dark-theme & {
@@ -29,20 +29,20 @@
         flex-wrap: wrap;
         align-content: flex-start;
         width: 100%;
-        margin: 4px 0;
-        font-size: 10px;
+        margin: 0.4rem 0;
+        font-size: 1rem;
         &:first-child {
             margin-top: 0;
         }
 
         &--position {
             &-header {
-                height: 30px;
+                height: 3rem;
                 align-items: center;
                 align-content: center;
             }
             &-cover {
-                height: 70px;
+                height: 7rem;
 
                 .icon {
                     background: $color-white;
@@ -53,13 +53,13 @@
                         &-left-bottom {
                             .icon {
                                 border-left: none;
-                                border-radius: 0 6px 0 0;
+                                border-radius: 0 0.6rem 0 0;
                             }
                         }
                         &-right-bottom {
                             .icon {
                                 border-right: none;
-                                border-radius: 6px 0 0 0;
+                                border-radius: 0.6rem 0 0 0;
                             }
                         }
                     }
@@ -70,7 +70,7 @@
                 overflow: auto;
             }
             &-footer {
-                height: 24px;
+                height: 2.4rem;
                 margin-bottom: 0;
                 align-self: flex-end;
             }
@@ -105,24 +105,24 @@
 
     &--format {
         &-mini {
-            width: 166px; //44mm;
-            height: 257px; //68mm;
+            width: 16.6rem; //44mm;
+            height: 25.7rem; //68mm;
         }
         &-standard {
-            width: 241px; //64mm;
-            height: 336px; //89mm;
+            width: 24.1rem; //64mm;
+            height: 33.6rem; //89mm;
 
             .region {
                 &--position {
                     &-cover {
-                        height: 90px;
+                        height: 9rem;
                     }
                 }
             }
         }
         &-oversize {
-            width: 278px; //79mm;
-            height: 441px; //120mm;
+            width: 27.8rem; //79mm;
+            height: 44.1rem; //120mm;
         }
     }
 
@@ -139,40 +139,40 @@
             text-align: center;
             font-style: italic;
             + .description {
-                margin-top: 8px;
+                margin-top: 0.8rem;
             }
         }
         &.description {
             line-height: 1.4;
             .in-text-icon {
                 display: inline-block;
-                width: 12px;
-                height: 12px;
+                width: 1.2rem;
+                height: 1.2rem;
                 vertical-align: middle;
             }
             .no-wrap {
                 white-space: nowrap;
             }
             + .description {
-                margin-top: 4px;
+                margin-top: 0.4rem;
             }
 
             &--dots,
             &--dots-below {
                 + .description--dots {
                     position: relative;
-                    margin-top: 16px;
+                    margin-top: 1.6rem;
                     &::before {
                         content: '';
                         position: absolute;
-                        top: -11px;
+                        top: -1.1rem;
                         left: 50%;
-                        width: 24px;
-                        height: 12px;
-                        margin-left: -12px;
-                        background-image: radial-gradient($color-black 1px, $color-white 2px);
+                        width: 2.4rem;
+                        height: 1.2rem;
+                        margin-left: -1.2rem;
+                        background-image: radial-gradient($color-black 0.1rem, $color-white 0.2rem);
                         background-position: 0 0;
-                        background-size: 8px 8px;
+                        background-size: 0.8rem 0.8rem;
                         background-repeat: repeat-x
                     }
                 }
@@ -184,16 +184,16 @@
         }
         &.trace-order {
             position: relative;
-            padding-left: 20px;
+            padding-left: 2rem;
             &.trace-order--progressive {
                 &::after {
                     content: '';
                     position: absolute;
                     top: 0.5em;
-                    bottom: -6px;
+                    bottom: -0.6rem;
                     left: 0.4em;
                     width: 0;
-                    border-left: 2px dashed $color-black;
+                    border-left: 0.2rem dashed $color-black;
                     z-index: 1;
                 }
                 &.trace-order--last {
@@ -209,7 +209,7 @@
             left: 0;
             width: 1em;
             height: 1em;
-            border: 2px solid $color-black;
+            border: 0.2rem solid $color-black;
             border-radius: 50%;
             background-color: $color-white;
             z-index: 2;
@@ -220,30 +220,30 @@
         width: 100%;
         height: 100%;
         background-color: $color-gallery-gray;
-        border-radius: 6px;
+        border-radius: 0.6rem;
         img {
             position: absolute;
             top: 0;
             left: 0;
             right: 0;
             bottom: 0;
-            height: 64px;
+            height: 6.4rem;
             margin: auto;
             mix-blend-mode: multiply;
         }
     }
 
     .icon {
-        min-width: 24px;
-        height: 24px;
-        margin-right: 2px;
-        border: 2px solid $color-black;
+        min-width: 2.4rem;
+        height: 2.4rem;
+        margin-right: 0.2rem;
+        border: 0.2rem solid $color-black;
         border-bottom: none;
-        border-radius: 6px 6px 0 0;
+        border-radius: 0.6rem 0.6rem 0 0;
         text-align: center;
         &--last {
             order: 99;
-            margin-left: 2px;
+            margin-left: 0.2rem;
             margin-right: 0;
         }
         &:last-child {
@@ -252,24 +252,38 @@
 
         &-image {
             display: inline-block;
-            width: 20px;
-            height: 20px;
-            margin: 1px 2px;
+            width: 2rem;
+            height: 2rem;
+            margin: 0.1rem 0.2rem;
         }
         &-index {
             display: inline-block;
-            width: 12px;
-            height: 12px;
-            margin: 1px 2px 0 -2px;
+            width: 1.2rem;
+            height: 1.2rem;
+            margin: 0.1rem 0.2rem 0 -0.2rem;
         }
         &-text {
             display: inline-block;
-            font-size: 12px;
+            font-size: 1.2rem;
             font-weight: bold;
-            line-height: 22px;
-            margin: 0 2px 0 0;
+            line-height: 2.2rem;
+            margin: 0 0.2rem 0 0;
             &:first-child {
-                margin-left: 2px;
+                margin-left: 0.2rem;
+            }
+        }
+    }
+
+    &.mod {
+        &--middle {
+            .text-node {
+                &.description {
+                    text-align: center;
+                    margin-top: 45%;
+                    + .description {
+                        margin-top: 0;
+                    }
+                }
             }
         }
     }
