@@ -8,6 +8,8 @@ export default class Resizer {
     }
 
     renderDOM() {
+        if (localStorage.defaultFontSize) document.documentElement.style.fontSize = `${localStorage.defaultFontSize}px`;
+
         this.wrapper = document.createElement('div');
         this.plus = document.createElement('a');
         this.default = document.createElement('a');
@@ -58,10 +60,12 @@ export default class Resizer {
         else if (direction === 'down') fontSize--;
         document.documentElement.style.fontSize = `${fontSize}px`;
         document.body.dispatchEvent(this.customEvent);
+        localStorage.defaultFontSize = fontSize;
     }
 
     resetFontSize() {
         document.documentElement.style.fontSize = `${this.defaultFontSize}px`;
         document.body.dispatchEvent(this.customEvent);
+        localStorage.defaultFontSize = this.defaultFontSize;
     }
 }

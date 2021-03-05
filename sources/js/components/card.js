@@ -16,6 +16,7 @@ const replacementsArray = {
 export default class Card {
     constructor(params) {
         this.params = params;
+        this.internval = [];
 
         this.renderLayout();
         if (this.params.renderDefaultValues) this.renderDefaultValues();
@@ -196,7 +197,7 @@ export default class Card {
     }
 
     resetTextInRegions() {
-        console.log('reset');
+        this.internval.forEach(clearInterval);
         this.container.querySelectorAll('.region').forEach(item => {
             if (item.getAttribute('data-font-size')) {
                 item.removeAttribute('data-font-size');
@@ -206,8 +207,10 @@ export default class Card {
     }
 
     fitTextInRegions() {
-        this.container.querySelectorAll('.region').forEach(item => {
-            const interval = setInterval(() => {
+        this.internval = [];
+
+        this.container.querySelectorAll('.region').forEach((item, i) => {
+            this.internval.push(setInterval(() => {
                 if (item.scrollHeight > item.offsetHeight) {
                     let fontSize = item.getAttribute('data-font-size') || 1;
 
@@ -215,8 +218,8 @@ export default class Card {
 
                     item.setAttribute('data-font-size', fontSize);
                     item.style.fontSize = `${fontSize}em`;
-                } else clearInterval(interval);
-            }, 10);
+                } else clearInterval(this.internval[i - 1]);
+            }, 10));
         });
     }
 

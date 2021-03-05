@@ -7,7 +7,7 @@ class App {
     }
 
     init() {
-        new Resizer();
+        if (document.querySelector('.deck')) new Resizer();
         document.querySelectorAll('.deck').forEach(item => {
             new DeckHandler(item);
         });
