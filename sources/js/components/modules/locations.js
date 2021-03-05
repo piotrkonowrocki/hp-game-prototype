@@ -7,6 +7,7 @@ export default class {
         };
         this.deckSettings = {
             format: 'mini',
+            back: 'location',
             renderDefaultValues: true,
             renderer: this.renderer
         };
@@ -15,11 +16,13 @@ export default class {
     parseData(sheet) {
         sheet.shift();
         sheet.forEach((row, i) => {
-            this.sets[i] = {
-                title: 'Lokacja',
-                area: row[0],
-                field: row[1]
-            };
+            if (row[0] !== row[1]) {
+                this.sets[i] = {
+                    title: 'Lokacja',
+                    area: row[0],
+                    field: row[1]
+                };
+            }
         });
     }
 

@@ -7,6 +7,7 @@ export default class {
         };
         this.deckSettings = {
             format: 'mini',
+            back: 'item-potion',
             renderDefaultValues: true,
             renderer: this.renderer
         };

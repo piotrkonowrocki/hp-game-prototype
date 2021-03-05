@@ -19,6 +19,7 @@ export default class Card {
         this.internval = [];
 
         this.renderLayout();
+        if (this.params.back) this.renderBack();
         if (this.params.renderDefaultValues) this.renderDefaultValues();
         if (this.params.renderCustomValues) this.renderCustomValues();
     }
@@ -53,13 +54,25 @@ export default class Card {
         const regions = [];
         const footerKeys = ['val', 'slot', 'size', 'darkMagic', 'modifiers', 'duration', 'traces'];
 
-        if (this.params.data.title) regions.push('header');
-        if (this.params.data.cover) regions.push('cover');
-        if (this.params.data.category) regions.push('subheader');
-        regions.push('content');
-        if (Object.keys(this.params.data).some(item => footerKeys.indexOf(item) >= 0)) regions.push('footer');
+        if (this.params.data) {
+            if (this.params.data.title) regions.push('header');
+            if (this.params.data.cover) regions.push('cover');
+            if (this.params.data.category) regions.push('subheader');
+            regions.push('content');
+            if (Object.keys(this.params.data).some(item => footerKeys.indexOf(item) >= 0)) regions.push('footer');
+        }
 
         return regions;
+    }
+
+    renderBack() {
+        const img = document.createElement('img');
+
+        img.src = `../img/content/${this.params.back}.png`;
+        img.classList.add('back-icon');
+
+        this.container.classList.add('mod--back');
+        this.container.appendChild(img);
     }
 
     renderDefaultValues() {

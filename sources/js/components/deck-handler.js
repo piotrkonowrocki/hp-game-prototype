@@ -56,7 +56,6 @@ export default class DeckHandler {
         Object.keys(this.module.sets).forEach(set => {
             this.deck.createCard(this.module.sets[set]);
         });
-        // this.deck.createCard(this.module.sets[9]);
     }
 
     displayCards() {
@@ -94,7 +93,7 @@ export default class DeckHandler {
             e.preventDefault();
         });
         shuffle.addEventListener('click', e => {
-            this.nextCard();
+            this.shuffleCards();
 
             e.preventDefault();
         });
@@ -114,6 +113,13 @@ export default class DeckHandler {
                 this.displayCards();
             }
         }
+    }
+
+    shuffleCards() {
+        const current = this.container.querySelector('.current');
+
+        current.classList.remove('current');
+        this.displayCards();
     }
 
     attachEvents() {

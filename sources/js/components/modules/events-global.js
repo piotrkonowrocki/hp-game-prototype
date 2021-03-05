@@ -7,6 +7,7 @@ export default class {
         };
         this.deckSettings = {
             format: 'standard',
+            back: 'event-global',
             renderDefaultValues: true,
             renderer: this.renderer
         };

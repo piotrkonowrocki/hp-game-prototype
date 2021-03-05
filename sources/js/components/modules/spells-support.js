@@ -7,6 +7,7 @@ export default class {
         };
         this.deckSettings = {
             format: 'standard',
+            back: 'attribute-spells-support',
             renderDefaultValues: true,
             renderer: this.renderer
         };

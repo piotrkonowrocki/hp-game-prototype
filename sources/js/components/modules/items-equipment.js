@@ -7,6 +7,7 @@ export default class {
         };
         this.deckSettings = {
             format: 'mini',
+            back: 'item-equipment',
             renderDefaultValues: true,
             renderer: this.renderer
         };

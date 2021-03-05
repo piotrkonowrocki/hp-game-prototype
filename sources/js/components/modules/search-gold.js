@@ -7,6 +7,7 @@ export default class {
         };
         this.deckSettings = {
             format: 'mini',
+            back: 'rank-2',
             renderDefaultValues: true,
             renderer: this.renderer
         };

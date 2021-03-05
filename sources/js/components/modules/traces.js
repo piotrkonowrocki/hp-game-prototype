@@ -7,6 +7,7 @@ export default class {
         };
         this.deckSettings = {
             format: 'oversize',
+            back: 'deathly-hallows',
             renderDefaultValues: true,
             renderer: this.renderer
         };

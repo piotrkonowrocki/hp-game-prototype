@@ -7,6 +7,7 @@ export default class {
         };
         this.deckSettings = {
             format: 'mini',
+            back: 'search',
             renderDefaultValues: true,
             renderer: this.renderer
         };

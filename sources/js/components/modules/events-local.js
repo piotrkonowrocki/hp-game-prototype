@@ -7,6 +7,7 @@ export default class {
         };
         this.deckSettings = {
             format: 'oversize',
+            back: 'event-local',
             renderDefaultValues: true,
             renderer: this.renderer
         };
