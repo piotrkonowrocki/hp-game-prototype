@@ -23,8 +23,7 @@ export default class {
                 duration: row[4],
                 search: row[5],
                 shop: row[6],
-                npc: row[7],
-                income: row[8]
+                income: row[7]
             };
         });
     }
@@ -40,18 +39,6 @@ export default class {
             break;
         case 'rotacja':
             shopIndex = 'shop-replace';
-
-            break;
-        case 'wymiana ekwipunku':
-            shopIndex = 'item-equipment';
-
-            break;
-        case 'wymiana ksiąg':
-            shopIndex = 'item-book';
-
-            break;
-        case 'wymiana eliksirów':
-            shopIndex = 'item-potion';
 
             break;
         default:
@@ -86,11 +73,6 @@ export default class {
             card.pushIcon('footer', 'left-bottom', {
                 icon: 'shop',
                 index: shopIndex
-            });
-        }
-        if (data.npc) {
-            card.pushIcon('footer', 'left-bottom', {
-                icon: 'npc'
             });
         }
         if (data.income) {

@@ -210,7 +210,9 @@ export default class Card {
     }
 
     resetTextInRegions() {
-        this.internval.forEach(clearInterval);
+        Object.keys(this.internval).forEach(k => {
+            clearInterval(this.internval[k]);
+        });
         this.container.querySelectorAll('.region').forEach(item => {
             if (item.getAttribute('data-font-size')) {
                 item.removeAttribute('data-font-size');
@@ -220,10 +222,12 @@ export default class Card {
     }
 
     fitTextInRegions() {
-        this.internval = [];
+        this.internval = {};
 
         this.container.querySelectorAll('.region').forEach((item, i) => {
-            this.internval.push(setInterval(() => {
+            const id = item.className;
+
+            this.internval[id] = setInterval(() => {
                 if (item.scrollHeight > item.offsetHeight) {
                     let fontSize = item.getAttribute('data-font-size') || 1;
 
@@ -231,8 +235,8 @@ export default class Card {
 
                     item.setAttribute('data-font-size', fontSize);
                     item.style.fontSize = `${fontSize}em`;
-                } else clearInterval(this.internval[i - 1]);
-            }, 10));
+                } else clearInterval(this.internval[id]);
+            }, 10);
         });
     }
 
