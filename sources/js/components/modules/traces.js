@@ -28,7 +28,7 @@ export default class {
                 orders,
                 progressive: row[6] === 'tak',
                 traces: row[8],
-                additionalReward: row[15]
+                additionalReward: row[16]
             };
         });
     }

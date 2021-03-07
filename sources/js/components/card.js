@@ -224,7 +224,7 @@ export default class Card {
     fitTextInRegions() {
         this.internval = {};
 
-        this.container.querySelectorAll('.region').forEach((item, i) => {
+        this.container.querySelectorAll('.region').forEach(item => {
             const id = item.className;
 
             this.internval[id] = setInterval(() => {
