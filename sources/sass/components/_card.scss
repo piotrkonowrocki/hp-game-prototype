@@ -45,21 +45,35 @@
                 height: 7rem;
 
                 .icon {
+                    margin: 0.4rem 0 0;
                     background: $color-white;
+                    border-top-width: 0.1rem;
                     border-color: transparent;
                 }
                 .corner {
                     &--position {
+                        &-left-bottom,
+                        &-right-bottom {
+                            flex-direction: column;
+                        }
                         &-left-bottom {
+                            align-items: flex-start;
                             .icon {
                                 border-left: none;
-                                border-radius: 0 0.6rem 0 0;
+                                border-radius: 0 0.6rem 0.6rem 0;
+                                &:last-child {
+                                    border-radius: 0 0.6rem 0 0;
+                                }
                             }
                         }
                         &-right-bottom {
+                            align-items: flex-end;
                             .icon {
                                 border-right: none;
-                                border-radius: 0.6rem 0 0 0;
+                                border-radius: 0.6rem 0 0 0.6rem;
+                                &:last-child {
+                                    border-radius: 0.6rem 0 0 0;
+                                }
                             }
                         }
                     }
@@ -240,7 +254,7 @@
         border: 0.2rem solid $color-black;
         border-bottom: none;
         border-radius: 0.6rem 0.6rem 0 0;
-        text-align: center;
+        text-align: left;
         &--last {
             order: 99;
             margin-left: 0.2rem;
@@ -299,6 +313,11 @@
                         margin-top: 0;
                     }
                 }
+            }
+        }
+        &--large-cover {
+            .region--position-cover {
+                height: 19rem;
             }
         }
     }

@@ -9,6 +9,7 @@
     "sitemap": {
       "index": "index.html",
       "dashboard": "dashboard.html",
+      "npc": "npc.html",
       "events-local": "events-local.html",
       "events-global": "events-global.html",
       "traces": "traces.html",

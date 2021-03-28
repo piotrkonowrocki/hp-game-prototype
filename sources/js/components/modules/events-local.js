@@ -63,7 +63,7 @@ export default class {
         const successNarrative = card.createTextNode(data.success.narrative, {
             classes: ['description', 'description--dots'],
             wrapper: 'em',
-            prefix: '<strong>Sukces:</strong> '
+            prefix: '<strong>Porażka:</strong> '
         });
         const successOutcome = card.createTextNode(data.success.outcome, {
             classes: ['description']

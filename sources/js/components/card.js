@@ -52,7 +52,7 @@ export default class Card {
 
     determineDefaultRegions() {
         const regions = [];
-        const footerKeys = ['val', 'slot', 'size', 'darkMagic', 'modifiers', 'duration', 'traces'];
+        const footerKeys = ['val', 'slot', 'size', 'darkMagic', 'modifiers', 'duration', 'traces', 'level'];
 
         if (this.params.data) {
             if (this.params.data.title) regions.push('header');
