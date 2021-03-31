@@ -197,6 +197,17 @@ export default class Card {
             text.innerHTML = settings.text;
             container.appendChild(text);
         }
+        if (settings.addition) {
+            const symbol = document.createElement('span');
+            const img = document.createElement('img');
+
+            symbol.classList.add('icon-addition-symbol');
+            symbol.innerHTML = settings.addition[0];
+            img.classList.add('icon-addition-image');
+            img.src = `../img/content/${settings.addition[1]}.png`;
+            container.appendChild(symbol);
+            container.appendChild(img);
+        }
         if (settings.last) {
             container.classList.add('icon--last');
         }

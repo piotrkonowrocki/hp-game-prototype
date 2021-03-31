@@ -34,7 +34,7 @@ export default class {
                     status: row[8]
                 },
                 potion: {
-                    val: row[9].replace('x', ' × ')
+                    val: row[9]
                 },
                 movement: row[10],
                 support: {
@@ -49,26 +49,40 @@ export default class {
 
     renderer(card) {
         const data = card.params.data;
+        /* eslint-disable quote-props */
+        const statuses = {
+            'Agonia': 'agony',
+            'Choroba': 'disease',
+            'Oszołomienie': 'stun',
+            'Unieruchomienie': 'immobilize',
+            'Zranienie': 'wound',
+            'Niewrażliwość': 'immunity',
+            'Odporność': 'resistance',
+            'Regeneracja': 'regeneration'
+        };
+        /* eslint-enable */
 
         card.container.classList.add('mod--large-cover');
         card.pushIcon('footer', 'left-bottom', {
-            icon: 'level',
-            text: data.level
+            icon: `level${data.level === 'Elitarny' ? '-special' : ''}`,
+            text: data.level !== 'Elitarny' ? data.level : false
         });
         card.pushIcon('cover', 'left-bottom', {
             icon: 'attribute-spells-offensive',
-            text: data.attack.val
+            text: data.attack.val,
+            addition: data.attack.status ? ['+', `status-${statuses[data.attack.status]}`] : false
         });
         if (data.heal.val) {
             card.pushIcon('cover', 'left-bottom', {
                 icon: 'spell-heal',
-                text: data.heal.val
+                text: data.heal.val,
+                addition: data.heal.status ? ['+', `status-${statuses[data.heal.status]}`] : false
             });
         }
         if (data.potion.val) {
             card.pushIcon('cover', 'left-bottom', {
                 icon: 'item-potion',
-                text: data.potion.val
+                text: data.potion.val.replace('x', ' × ')
             });
         }
 
@@ -89,21 +103,35 @@ export default class {
             card.container.querySelector('.region--position-content').appendChild(support);
         }
 
+        if (data.level === 'Elitarny') {
+            const support = card.createTextNode('Dopóki ta postać znajduje się w grze, wszystkie pogłoski są niedostępne.', {
+                classes: ['description'],
+                prefix: '<strong>Elitarny :</strong> '
+            });
+
+            card.container.querySelector('.region--position-content').appendChild(support);
+        }
+
         card.pushIcon('cover', 'right-bottom', {
             icon: 'spell-counter',
-            text: data.defense.val
+            text: data.defense.val,
+            addition: data.defense.status ? ['+', `status-${statuses[data.defense.status]}`] : false
         });
-        card.pushIcon('footer', 'left-bottom', {
-            icon: 'money',
-            text: data.wanted
-        });
+        if (data.wanted) {
+            card.pushIcon('footer', 'left-bottom', {
+                icon: 'money',
+                text: data.wanted
+            });
+        }
 
-        const ranks = ['brąz', 'srebro', 'złoto'];
+        if (data.reward) {
+            const ranks = ['brąz', 'srebro', 'złoto'];
 
-        card.pushIcon('footer', 'left-bottom', {
-            icon: 'cube',
-            scale: 0.9,
-            index: `rank-${ranks.indexOf(data.reward) + 1}`
-        });
+            card.pushIcon('footer', 'left-bottom', {
+                icon: 'cube',
+                scale: 0.9,
+                index: `rank-${ranks.indexOf(data.reward) + 1}`
+            });
+        }
     }
 }
