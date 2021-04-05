@@ -9,7 +9,10 @@ const replacementsArray = {
     'Moc zaklę': 'spell-power',
     'Kontr': 'spell-counter',
     'Petard': 'item-equipment-firework',
-    'Pułap': 'item-equipment-trap'
+    'Pułap': 'item-equipment-trap',
+    'Regeneracja': 'status-regeneration',
+    'Niewrażliwość': 'status-immunity',
+    'Odporność': 'status-resistance'
 };
 /* eslint-enable */
 

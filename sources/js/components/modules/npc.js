@@ -68,7 +68,7 @@ export default class {
             text: data.level !== 'Elitarny' ? data.level : false
         });
         card.pushIcon('cover', 'left-bottom', {
-            icon: 'attribute-spells-offensive',
+            icon: 'damage',
             text: data.attack.val,
             addition: data.attack.status ? ['+', `status-${statuses[data.attack.status]}`] : false
         });
