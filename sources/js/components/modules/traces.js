@@ -27,8 +27,8 @@ export default class {
                 preparation: row[2],
                 orders,
                 progressive: row[6] === 'tak',
-                traces: row[8],
-                additionalReward: row[16]
+                traces: row[7],
+                additionalReward: row[15]
             };
         });
     }
