@@ -8,6 +8,17 @@
     border: 0.2rem solid $color-black;
     border-radius: 0.6rem;
     background-color: $color-white;
+    -webkit-print-color-adjust: exact;
+    @media print {
+        margin: 0 1px 1px 0;
+        border-color: $color-black;
+        // border-color: $color-silver-gray;
+        border-radius: 0;
+        // display: none;
+        // &:nth-child(17) {
+        //     display: flex;
+        // }
+    }
 
     .dark-theme & {
         border-color: $color-gray;
@@ -51,6 +62,9 @@
                     border-color: transparent;
                 }
                 .corner {
+                    @media print {
+                        margin: 0.2rem;
+                    }
                     &--position {
                         &-left-bottom,
                         &-right-bottom {
@@ -61,8 +75,22 @@
                             .icon {
                                 border-left: none;
                                 border-radius: 0 0.6rem 0.6rem 0;
+                                @media print {
+                                    height: 2.8rem;
+                                    border-top: 0.2rem solid $color-black;
+                                    border-right: 0.2rem solid $color-black;
+                                    border-bottom: 0.2rem solid $color-black;
+                                    // border-top: 0.2rem solid $color-silver-gray;
+                                    // border-right: 0.2rem solid $color-silver-gray;
+                                    // border-bottom: 0.2rem solid $color-silver-gray;
+                                }
                                 &:last-child {
                                     border-radius: 0 0.6rem 0 0;
+                                    @media print {
+                                        height: 2.6rem;
+                                        border-bottom: none;
+                                        border-radius: 0 0.6rem 0 0.6rem;
+                                    }
                                 }
                             }
                         }
@@ -71,8 +99,22 @@
                             .icon {
                                 border-right: none;
                                 border-radius: 0.6rem 0 0 0.6rem;
+                                @media print {
+                                    height: 2.8rem;
+                                    border-top: 0.2rem solid $color-black;
+                                    border-bottom: 0.2rem solid $color-black;
+                                    border-left: 0.2rem solid $color-black;
+                                    // border-top: 0.2rem solid $color-silver-gray;
+                                    // border-bottom: 0.2rem solid $color-silver-gray;
+                                    // border-left: 0.2rem solid $color-silver-gray;
+                                }
                                 &:last-child {
                                     border-radius: 0.6rem 0 0 0;
+                                    @media print {
+                                        height: 2.6rem;
+                                        border-bottom: none;
+                                        border-radius: 0.6rem 0 0.6rem 0;
+                                    }
                                 }
                             }
                         }
@@ -82,6 +124,9 @@
             &-content {
                 flex-grow: 1;
                 overflow: auto;
+                @media print {
+                    overflow: hidden;
+                }
             }
             &-footer {
                 height: 2.4rem;
@@ -125,6 +170,16 @@
         &-standard {
             width: 24.1rem; //64mm;
             height: 33.6rem; //89mm;
+            &:nth-child(9n) {
+                @media print {
+                    margin-bottom: 50px;
+                }
+                &:last-child {
+                    @media print {
+                        margin-bottom: 0;
+                    }
+                }
+            }
 
             .region {
                 &--position {
@@ -235,6 +290,11 @@
         height: 100%;
         background-color: $color-gallery-gray;
         border-radius: 0.6rem;
+        @media print {
+            background-color: transparent;
+            border: 0.2rem solid $color-black;
+            // border: 0.2rem solid $color-silver-gray;
+        }
         img {
             position: absolute;
             top: 0;
@@ -244,6 +304,9 @@
             height: 6.4rem;
             margin: auto;
             mix-blend-mode: multiply;
+            @media print {
+                opacity: 0.1;
+            }
         }
     }
 
@@ -255,6 +318,10 @@
         border-bottom: none;
         border-radius: 0.6rem 0.6rem 0 0;
         text-align: left;
+        @media print {
+            border-color: $color-black;
+            // border-color: $color-silver-gray;
+        }
         &--last {
             order: 99;
             margin-left: 0.2rem;
@@ -308,6 +375,9 @@
         &--back {
             background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHdpZHRoPSc4JyBoZWlnaHQ9JzgnPgogIDxyZWN0IHdpZHRoPSc4JyBoZWlnaHQ9JzgnIGZpbGw9JyNmZmYnLz4KICA8cGF0aCBkPSdNMCAwTDggOFpNOCAwTDAgOFonIHN0cm9rZS13aWR0aD0nMC41JyBzdHJva2U9JyNhYWEnLz4KPC9zdmc+Cg==');
             background-repeat: repeat;
+            @media print {
+                display: none;
+            }
             .back-icon {
                 position: absolute;
                 top: 0;

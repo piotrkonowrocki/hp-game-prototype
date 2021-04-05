@@ -5,6 +5,10 @@
     &--fluid {
         width: 100%;
     }
+    @media print {
+        width: 100%;
+        padding: 0;
+    }
 }
 
 .row {
