@@ -7,7 +7,7 @@ export default class {
         };
         this.deckSettings = {
             format: 'standard',
-            back: 'attribute-spells-offensive',
+            back: 'spell',
             renderDefaultValues: true,
             renderer: this.renderer
         };

@@ -29,7 +29,8 @@ export default class {
                     success: {
                         narrative: row[8],
                         outcome: row[9]
-                    }
+                    },
+                    versus: row[10]
                 };
             }
         });
@@ -79,6 +80,11 @@ export default class {
         if (hasOrder) {
             card.container.querySelector('.region--position-content').appendChild(successNarrative);
             card.container.querySelector('.region--position-content').appendChild(successOutcome);
+        }
+        if (data.versus === 'tak') {
+            card.pushIcon('footer', 'left-bottom', {
+                icon: 'versus'
+            });
         }
     }
 }
