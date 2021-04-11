@@ -225,6 +225,12 @@
             + .description {
                 margin-top: 0.4rem;
             }
+            &.footnote {
+                position: absolute;
+                left: 0;
+                bottom: 0;
+                font-size: 0.8rem;
+            }
 
             &--dots,
             &--dots-below {

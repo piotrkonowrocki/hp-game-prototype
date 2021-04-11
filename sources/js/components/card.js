@@ -1,20 +1,21 @@
 /* eslint-disable quote-props */
-const replacementsArray = {
-    'Zaklęcia bojow': 'attribute-spells-offensive',
-    'Zaklęcia wspomagają': 'attribute-spells-support',
-    'Zaklęcia praktyczn': 'attribute-spells-practical',
-    'Wiedz': 'attribute-knowledge',
-    'Wpływ': 'attribute-influence',
-    'Spryt': 'attribute-cunning',
-    'Moc zaklę': 'spell-power',
-    'Kontr': 'spell-counter',
-    'Petard': 'item-equipment-firework',
-    'Pułap': 'item-equipment-trap',
-    'Regeneracja': 'status-regeneration',
-    'Niewrażliwość': 'status-immunity',
-    'Odporność': 'status-resistance'
-};
+// const replacementsArray = {
+//     'Zaklęcia bojow': 'attribute-spells-offensive',
+//     'Zaklęcia wspomagają': 'attribute-spells-support',
+//     'Zaklęcia praktyczn': 'attribute-spells-practical',
+//     'Wiedz': 'attribute-knowledge',
+//     'Wpływ': 'attribute-influence',
+//     'Spryt': 'attribute-cunning',
+//     'Moc zaklę': 'spell-power',
+//     'Kontr': 'spell-counter',
+//     'Petard': 'item-equipment-firework',
+//     'Pułap': 'item-equipment-trap',
+//     'Regeneracja': 'status-regeneration',
+//     'Niewrażliwość': 'status-immunity',
+//     'Odporność': 'status-resistance'
+// };
 /* eslint-enable */
+import replacementsArray from './replacements-array';
 
 export default class Card {
     constructor(params) {
