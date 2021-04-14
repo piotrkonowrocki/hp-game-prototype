@@ -24,10 +24,11 @@ export default class {
                 cover: row[1] === 'Zaklęcie bojowe' ? 'attribute-spells-offensive' : 'attribute-spells-support',
                 category: `${row[1]} / ${row[2]}`,
                 spellDescription,
-                power: row[5],
-                cooldown: row[6],
-                modifiers: row[7],
-                darkMagic: row[8] === 'tak'
+                footnote: row[5].replace(/\r?\n/u, '<br />'),
+                power: row[6],
+                cooldown: row[7],
+                modifiers: row[8],
+                darkMagic: row[9] === 'tak'
             };
         });
     }
@@ -58,9 +59,17 @@ export default class {
             card.container.querySelector('.region--position-content').appendChild(description);
         });
 
+        if (data.footnote) {
+            const footnote = card.createTextNode(data.footnote, {
+                classes: ['description', 'footnote']
+            });
+
+            card.container.querySelector('.region--position-content').appendChild(footnote);
+        }
+
         data.modifiers.split('').forEach(symbol => {
             card.pushIcon('footer', 'left-bottom', {
-                text: `${symbol}&#xFE0E;`
+                icon: `modifier-${symbol}`
             });
         });
     }
