@@ -1,20 +1,3 @@
-/* eslint-disable quote-props */
-// const replacementsArray = {
-//     'Zaklęcia bojow': 'attribute-spells-offensive',
-//     'Zaklęcia wspomagają': 'attribute-spells-support',
-//     'Zaklęcia praktyczn': 'attribute-spells-practical',
-//     'Wiedz': 'attribute-knowledge',
-//     'Wpływ': 'attribute-influence',
-//     'Spryt': 'attribute-cunning',
-//     'Moc zaklę': 'spell-power',
-//     'Kontr': 'spell-counter',
-//     'Petard': 'item-equipment-firework',
-//     'Pułap': 'item-equipment-trap',
-//     'Regeneracja': 'status-regeneration',
-//     'Niewrażliwość': 'status-immunity',
-//     'Odporność': 'status-resistance'
-// };
-/* eslint-enable */
 import replacementsArray from './replacements-array';
 
 export default class Card {
@@ -155,6 +138,76 @@ export default class Card {
         return textNode;
     }
 
+    createTechniqueDiagram(schema) {
+        const ul = document.createElement('ul');
+
+        ul.classList.add('techniques');
+        schema.forEach(item => {
+            if (item) {
+                const li = document.createElement('li');
+
+                li.classList.add('techniques-die');
+                if (['/', '→'].some(symbol => item.includes(symbol))) li.classList.add('techniques-die--borderless');
+                if (item.match(/^(→|↺|✓|◻|\+)$/u)) li.classList.add('techniques-die--textless');
+                if (item === '→') li.classList.add('techniques-die--result');
+                else if (item === '↺') li.classList.add('techniques-die--reroll');
+                else if (item === '✓') li.classList.add('techniques-die--check');
+                else if (item === '+') li.classList.add('techniques-die--plus');
+                li.innerText = item;
+
+                ul.appendChild(li);
+            }
+        });
+
+        return ul;
+    }
+
+    createProgressGrid(schema) {
+        const grid = document.createElement('div');
+
+        grid.classList.add('progress');
+        schema.forEach(list => {
+            list.forEach(item => {
+                const point = document.createElement('div');
+
+                point.classList.add('progress-point');
+                point.innerText = item;
+                if (!item.match(/^(•|1|2|3|4)$/u)) {
+                    point.classList.add('progress-point--bg');
+                    point.classList.add(`progress-point--${item.toLowerCase()}`);
+                }
+
+                grid.appendChild(point);
+            });
+        });
+
+        return grid;
+    }
+
+    createIncomeTrack(schema) {
+        const lists = [];
+
+        for (const [k, v] of Object.entries(schema)) {
+            if (k !== 'moneyMultiplier' && v > 0) {
+                const ul = document.createElement('ul');
+
+                ul.classList.add('income');
+                for (let i = 0; i <= parseInt(v, 10); i++) {
+                    const li = document.createElement('li');
+
+                    li.classList.add('income-point');
+                    if (k === 'money' && i === parseInt(v, 10)) li.innerText = `${schema.moneyMultiplier}₷`;
+
+                    ul.appendChild(li);
+                }
+
+                lists.push(ul);
+            }
+        }
+
+        return lists;
+    }
+
     replaceTextToIcon(text) {
         let replacedText = text;
 
@@ -218,6 +271,21 @@ export default class Card {
 
         container.classList.add('icon');
         this.container.querySelector(`.region--position-${region} .corner--position-${corner}`).appendChild(container);
+    }
+
+    pushColumns(n) {
+        const columns = document.createElement('div');
+
+        columns.classList.add('columns');
+        this.container.querySelector('.region--position-content').classList.add('columns');
+        for (let i = 0; i < n; i++) {
+            const column = document.createElement('div');
+
+            column.classList.add('column');
+            column.classList.add(`column-${i + 1}`);
+            columns.appendChild(column);
+            this.container.querySelector('.region--position-content').appendChild(columns);
+        }
     }
 
     renderCustomValues() {

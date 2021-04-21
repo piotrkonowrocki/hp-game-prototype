@@ -15,18 +15,17 @@
     display: flex;
     flex-wrap: wrap;
     margin: 0 -20px;
-}
+    > [class^=col] {
+        flex: 1 0 0%;
+        padding: 0 20px;
+    }
+    > [class^=col-] {
+        flex: 1 0 auto;
+    }
 
-[class^=col] {
-    flex: 1 0 0%;
-    padding: 0 20px;
-}
-[class^=col-] {
-    flex: 1 0 auto;
-}
-
-.col {
-    &-6 {
-        width: 50%;
+    .col {
+        &-6 {
+            width: 50%;
+        }
     }
 }
