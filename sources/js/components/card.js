@@ -171,7 +171,7 @@ export default class Card {
                 const point = document.createElement('div');
 
                 point.classList.add('progress-point');
-                point.innerText = item;
+                if (item !== '•') point.innerText = item;
                 if (!item.match(/^(•|1|2|3|4)$/u)) {
                     point.classList.add('progress-point--bg');
                     point.classList.add(`progress-point--${item.toLowerCase()}`);
