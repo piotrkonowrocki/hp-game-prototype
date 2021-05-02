@@ -197,6 +197,7 @@ export default class Card {
 
                     li.classList.add('income-point');
                     if (k === 'money' && i === parseInt(v, 10)) li.innerText = `${schema.moneyMultiplier}₷`;
+                    else if (i === parseInt(v, 10)) li.classList.add(k);
 
                     ul.appendChild(li);
                 }
@@ -206,6 +207,26 @@ export default class Card {
         }
 
         return lists;
+    }
+
+    createAttributeMarker(icon, val) {
+        const marker = document.createElement('div');
+        const valWrapper = document.createElement('div');
+        const iconWrapper = document.createElement('div');
+        const iconImage = document.createElement('img');
+
+        marker.classList.add('attribute-marker');
+        valWrapper.classList.add('attribute-marker-val');
+        valWrapper.innerText = val;
+        iconWrapper.classList.add('attribute-marker-icon');
+        iconImage.classList.add('attribute-marker-icon-image');
+        iconImage.src = `../img/content/attribute-${icon}.png`;
+
+        iconWrapper.appendChild(iconImage);
+        marker.appendChild(iconWrapper);
+        marker.appendChild(valWrapper);
+
+        return marker;
     }
 
     replaceTextToIcon(text) {

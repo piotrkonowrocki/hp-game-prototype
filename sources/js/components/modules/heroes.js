@@ -7,6 +7,7 @@ export default class {
         };
         this.deckSettings = {
             format: 'hero',
+            regions: ['header', 'content', 'footer'],
             multipleTabs: true,
             renderDefaultValues: true,
             renderer: this.renderer
@@ -36,9 +37,9 @@ export default class {
             if (this.sets[i]) {
                 if (tab === 'Atrybuty') {
                     this.sets[i].attributes = {
-                        offensiveSpells: row[1],
-                        supportSpells: row[2],
-                        practicalSpells: row[3],
+                        'spells-offensive': row[1],
+                        'spells-support': row[2],
+                        'spells-practical': row[3],
                         knowledge: row[4],
                         influence: row[5],
                         cunning: row[6]
@@ -65,9 +66,10 @@ export default class {
                     this.sets[i].income = {
                         moneyMultiplier: row[1],
                         money: row[2],
-                        explosive: row[4],
-                        book: row[6],
-                        potion: row[8]
+                        equipment: row[4],
+                        explosive: row[6],
+                        book: row[8],
+                        potion: row[10]
                     };
                 }
                 if (tab === 'Pozostałe') {
@@ -84,6 +86,12 @@ export default class {
         const data = card.params.data;
 
         card.pushColumns(3);
+
+        for (const [k, v] of Object.entries(data.attributes)) {
+            const attribute = card.createAttributeMarker(k, v);
+
+            card.container.querySelector('.column-1').appendChild(attribute);
+        }
 
         for (const item of Object.entries(data.abilities)) {
             item[1][0] = `<strong>${item[1][0]}</strong>`;
@@ -132,6 +140,16 @@ export default class {
         card.container.querySelector('.column-3').appendChild(income);
         incomeTracks.forEach(incomeTrack => {
             card.container.querySelector('.column-3').appendChild(incomeTrack);
+        });
+
+        card.pushIcon('footer', 'left-bottom', {
+            icon: 'item-equipment-slot-hand'
+        });
+        card.pushIcon('footer', 'left-bottom', {
+            icon: 'item-equipment-slot-clothes'
+        });
+        card.pushIcon('footer', 'left-bottom', {
+            icon: 'item-equipment-slot-talisman'
         });
     }
 }

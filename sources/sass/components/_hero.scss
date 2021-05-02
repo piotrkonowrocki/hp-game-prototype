@@ -1,36 +1,86 @@
 .card {
     &--format {
         &-hero {
-            width: 60rem;
-            height: 40rem;
+            // width: 60rem;
+            width: 53.8rem;
+            height: 40.2rem;
+
+            .icon {
+                width: 16.6rem;
+                text-align: center;
+                &:first-child {
+                    margin-left: 0.8rem;
+                }
+            }
         }
     }
 
     .region {
         &.columns {
             flex-wrap: nowrap;
+            margin-bottom: 1rem;
         }
     }
 
     .columns {
         display: flex;
-        height: 100%;
-        width: calc(100% + 0.8rem);
-        margin: 0 -0.4rem;
+        // height: 100%;
+        width: 100%;
         justify-content: space-between;
         align-items: stretch;
         align-content: stretch;
         .column {
             padding: 0 0.8rem;
             &-1 {
-                width: 10.2rem;
+                width: 7.6rem;
             }
             &-2 {
-                width: 30rem;
+                // width: 31.8rem;
+                width: 25.6rem;
             }
             &-3 {
                 width: 18.6rem;
             }
+        }
+    }
+
+    .attribute-marker {
+        display: flex;
+        margin: 0 0 0.4rem 0;
+        font-family: $font-default-serif;
+        &:last-child {
+            margin-bottom: 0;
+        }
+        &-icon,
+        &-val {
+            border-radius: 50%;
+            border: 0.2rem solid $color-black;
+            background-color: $color-white;
+        }
+        &-icon {
+            position: relative;
+            width: 3em;
+            height: 3rem;
+            margin: 0.5rem -1rem 0 0;
+            overflow: hidden;
+            img {
+                position: absolute;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                left: 0;
+                width: 75%;
+                height: 75%;
+                margin: auto;
+            }
+        }
+        &-val {
+            width: 4rem;
+            height: 4rem;
+            text-align: center;
+            line-height: 3.6rem;
+            font-size: 1.6rem;
+            font-weight: bold;
         }
     }
 
@@ -39,6 +89,7 @@
         margin: 0;
         padding: 0;
         list-style: none;
+        font-family: $font-default-serif;
         &-die {
             width: 2.2rem;
             height: 2.2rem;
@@ -51,6 +102,7 @@
             margin: 0.4rem 0.2rem 0 0;
             &--borderless {
                 border-color: transparent;
+                font-family: $font-default-sans-serif;
             }
             &--textless {
                 color: transparent;
@@ -77,6 +129,7 @@
         flex-wrap: wrap;
         width: 13rem;
         margin: 0 0 1.4rem;
+        font-family: $font-default-serif;
         &-point {
             width: 2.5rem;
             height: 2.5rem;
@@ -124,6 +177,7 @@
         flex-wrap: wrap;
         margin: 0;
         padding: 0;
+        font-family: $font-default-serif;
         &-point {
             position: relative;
             width: 2.5rem;
@@ -136,6 +190,18 @@
             border-radius: 0.4rem;
             border: 0.2rem solid $color-black;
             background: $color-white no-repeat 50% 50% / 90% 90%;
+            &.equipment {
+                background-image: url('../img/content/item-equipment.png');
+            }
+            &.explosive {
+                background-image: url('../img/content/item-equipment-firework.png');
+            }
+            &.book {
+                background-image: url('../img/content/item-book.png');
+            }
+            &.potion {
+                background-image: url('../img/content/item-potion.png');
+            }
             &::after {
                 content: '';
                 position: absolute;
