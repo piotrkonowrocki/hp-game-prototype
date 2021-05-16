@@ -1,0 +1,50 @@
+.card {
+    &--format {
+        &-board {
+            width: 15rem;
+            padding: 0;
+            border: none;
+        }
+    }
+
+    .field {
+        width: 15rem;
+        height: 15rem;
+        margin: 1.5rem 0 0;
+        font-size: 0.8rem;
+        border: 0.2rem solid $color-black;
+        border-radius: 50%;
+        &-name {
+            display: block;
+            margin: -1.5rem 0.5rem 0;
+            padding: 0.4rem;
+            text-align: center;
+            border: 0.2rem solid $color-black;
+            border-radius: 0.2rem;
+            background-color: $color-white;
+            .place {
+                font-weight: bold;
+            }
+            .area {
+                font-style: italic;
+            }
+        }  
+    }
+
+    .properties {
+        margin: -1.9rem 0.5rem 0;
+        padding: 0.4rem;
+        font-size: 0.8rem;
+        line-height: 1.2;
+        border: 0.2rem solid $color-black;
+        border-radius: 0.2rem;
+        background-color: $color-white;
+        .text-node {
+            &.description {
+                + .description {
+                    margin-top: 0.2rem;
+                }
+            }
+        }
+    }
+}

@@ -20,6 +20,10 @@
         // }
     }
 
+    transition: opacity 200ms;
+    &.loading {
+        opacity: 0.5;
+    }
     .dark-theme & {
         border-color: $color-gray;
     }
