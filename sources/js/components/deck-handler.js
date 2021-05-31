@@ -139,5 +139,21 @@ export default class DeckHandler {
                 card.fitTextInRegions();
             });
         });
+        this.container.querySelectorAll('.card').forEach(card => {
+            card.addEventListener('click', e => {
+                const clone = e.currentTarget.cloneNode(true);
+                const zoom = document.createElement('div');
+                const scale = window.innerHeight / e.currentTarget.offsetHeight * 0.95;
+
+                zoom.classList.add('zoom');
+                zoom.style.transform = `scale(${scale})`;
+                zoom.appendChild(clone);
+                document.body.appendChild(zoom);
+
+                zoom.addEventListener('click', () => {
+                    zoom.parentNode.removeChild(zoom);
+                });
+            });
+        });
     }
 }
