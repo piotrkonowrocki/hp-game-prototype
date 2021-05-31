@@ -167,6 +167,16 @@
         &-mini {
             width: 16.6rem; //44mm;
             height: 25.7rem; //68mm;
+            &:nth-child(16n) {
+                @media print {
+                    margin-bottom: 30px;
+                }
+                &:last-child {
+                    @media print {
+                        margin-bottom: 0;
+                    }
+                }
+            }
         }
         &-standard {
             width: 24.1rem; //64mm;
@@ -199,6 +209,7 @@
     .text-node {
         display: block;
         width: 100%;
+        line-height: 1.4;
         &.title {
             font-family: $font-default-serif;
             font-size: 1.2em;
@@ -208,21 +219,12 @@
         &.category {
             text-align: center;
             font-style: italic;
+            line-height: 1.2;
             + .description {
                 margin-top: 0.8rem;
             }
         }
         &.description {
-            line-height: 1.4;
-            .in-text-icon {
-                display: inline-block;
-                width: 1.2rem;
-                height: 1.2rem;
-                vertical-align: middle;
-            }
-            .no-wrap {
-                white-space: nowrap;
-            }
             + .description {
                 margin-top: 0.4rem;
             }
@@ -233,6 +235,9 @@
                 font-size: 0.8rem;
             }
 
+            &--small {
+                font-size: 0.9em;
+            }
             &--dots,
             &--dots-below {
                 + .description--dots {
@@ -257,6 +262,15 @@
                 font-size: 0.8em;
                 text-align: center;
             }
+        }
+        .in-text-icon {
+            display: inline-block;
+            width: 1.2rem;
+            height: 1.2rem;
+            vertical-align: middle;
+        }
+        .no-wrap {
+            white-space: nowrap;
         }
         &.trace-order {
             position: relative;
@@ -289,6 +303,28 @@
             border-radius: 50%;
             background-color: $color-white;
             z-index: 2;
+        }
+        &.progressable {
+            position: relative;
+            min-height: 2.7rem;
+            margin-top: 0.2rem;
+            padding-left: 2.9rem;
+            &::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 2.5rem;
+                height: 2.5rem;
+                border-radius: 0.4rem;
+                border: 0.2rem solid #000;
+            }
+            + .description {
+                margin-top: 0.4rem;
+            }
+            &:last-child {
+                min-height: 2.5rem;
+            }
         }
     }
     .cover {

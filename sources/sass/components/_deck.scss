@@ -5,4 +5,8 @@
     &.playable {
         padding-top: 60px;
     }
+    &--supporting {
+        position: absolute;
+        right: 200vw;
+    }
 }

@@ -1,9 +1,10 @@
 export default class {
     constructor() {
+        window.abilityIndex = 0;
         this.sets = {};
         this.sheetDataSettings = {
             sheet: '1-9Xzo81Pp8kiXkCDSs7yTxhQHrDwY7c7Y8YXba80zrM',
-            tabs: ['Atrybuty', 'Słabe i mocne strony', 'Rozwój', 'Techniki', 'Przychód', 'Pozostałe']
+            tabs: ['Atrybuty', 'Rozwój', 'Techniki', 'Przychód', 'Pozostałe']
         };
         this.deckSettings = {
             format: 'hero',
@@ -45,13 +46,6 @@ export default class {
                         cunning: row[6]
                     };
                 }
-                if (tab === 'Słabe i mocne strony') {
-                    this.sets[i].abilities = {
-                        active: [row[1], row[2]],
-                        passive: [row[3], row[4]],
-                        weakness: [row[5], row[6]]
-                    };
-                }
                 if (tab === 'Rozwój') {
                     if (!this.sets[i].progress) this.sets[i].progress = [];
                     this.sets[i].progress.push([row[1], row[2], row[3], row[4]]);
@@ -85,7 +79,7 @@ export default class {
     renderer(card) {
         const data = card.params.data;
 
-        card.pushColumns(3);
+        card.pushColumns(4);
 
         for (const [k, v] of Object.entries(data.attributes)) {
             const attribute = card.createAttributeMarker(k, v);
@@ -93,25 +87,16 @@ export default class {
             card.container.querySelector('.column-1').appendChild(attribute);
         }
 
-        for (const item of Object.entries(data.abilities)) {
-            item[1][0] = `<strong>${item[1][0]}</strong>`;
-            item[1][1] = card.boldWordInText(item[1][1], 'Akcja:');
-        }
-        const abilities = {
-            active: card.createTextNode(data.abilities.active.join('<br />'), {
-                classes: ['description']
-            }),
-            passive: card.createTextNode(data.abilities.passive.join('<br />'), {
-                classes: ['description']
-            }),
-            weakness: card.createTextNode(data.abilities.weakness.join('<br />'), {
-                classes: ['description', 'description--dots']
-            })
-        };
+        setTimeout(() => {
+            const abilities = document.querySelectorAll('[data-module="skills"] .card');
 
-        card.container.querySelector('.column-2').appendChild(abilities.active);
-        card.container.querySelector('.column-2').appendChild(abilities.passive);
-        card.container.querySelector('.column-2').appendChild(abilities.weakness);
+            for (let i = 0; i < 3; i++) {
+                const col = card.container.querySelector(`.column-${i + 2}`);
+
+                col.insertBefore(abilities[window.abilityIndex].cloneNode(true), col.firstChild);
+                window.abilityIndex += 3;
+            }
+        }, 1000);
 
         const techniques = card.createTextNode('<strong>Techniki</strong>', {
             classes: ['description', 'description--dots']
@@ -137,9 +122,9 @@ export default class {
         });
         const incomeTracks = card.createIncomeTrack(data.income);
 
-        card.container.querySelector('.column-3').appendChild(income);
+        card.container.querySelector('.column-4').appendChild(income);
         incomeTracks.forEach(incomeTrack => {
-            card.container.querySelector('.column-3').appendChild(incomeTrack);
+            card.container.querySelector('.column-4').appendChild(incomeTrack);
         });
 
         card.pushIcon('footer', 'left-bottom', {

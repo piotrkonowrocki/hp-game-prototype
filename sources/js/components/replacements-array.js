@@ -1,8 +1,18 @@
 /* eslint-disable quote-props */
 const replacementsArray = {
+    'obrażenie': 'damage',
     'obrażenia': 'damage',
 
+    'zaklęć bojowych': 'attribute-spells-offensive',
+    'zaklęcie bojowe': 'attribute-spells-offensive',
     'Kontra': 'spell-counter',
+    'kontrze': 'spell-counter',
+    'kontrę': 'spell-counter',
+    'moc zaklęć': 'spell-power',
+    'mocy zaklęcia': 'spell-power',
+    'test zaklęć': 'spell',
+    'testu zaklęcia': 'spell',
+    'modyfikator': 'spell-modifier',
 
     'Agonia': 'status-agony',
     'Amnezja': 'status-amnesia',
@@ -16,7 +26,10 @@ const replacementsArray = {
 
     'Niewrażliwość': 'status-immunity',
     'Odporność': 'status-resistance',
-    'Regeneracja': 'status-regeneration'
+    'Regeneracja': 'status-regeneration',
+
+    'czarnomagicznych': 'dark-magic',
+    'materiałów wybuchowych': 'item-equipment-firework'
 };
 /* eslint-enable */
 
