@@ -33,6 +33,7 @@
     "webpack": "^4.43.0"
   },
   "dependencies": {
+    "fast-levenshtein": "^3.0.0",
     "normalize.css": "^8.0.1"
   }
 }
