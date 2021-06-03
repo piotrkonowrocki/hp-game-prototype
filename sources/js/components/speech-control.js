@@ -50,7 +50,7 @@ export default class SpeechControl {
 
         grammar = grammar.concat(this.commands);
         grammar = grammar.concat(this.decks);
-        grammar = `#JSGF V1.0; grammar colors; public <color> = ${grammar.join(' | ')} ;`;
+        grammar = `#JSGF V1.0; grammar commands; public <command> = ${grammar.join(' | ')} ;`;
 
         speechRecognitionList.addFromString(grammar, 1);
         this.recognition.grammars = speechRecognitionList;
